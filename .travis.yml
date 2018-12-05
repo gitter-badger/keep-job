@@ -1,0 +1,38 @@
+language: java
+jdk:
+  - oraclejdk8
+notification:
+  email:
+    recipients:
+    - 13811785355@163.com
+    on_success: always
+    on_failure: always
+
+before_script:
+- echo "MAVEN_OPTS='-Xms1024m -Xmx3072m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=384m'" > ~/.mavenrc
+
+before_install:
+- pip install --user codecov
+
+after_success:
+- mvn clean test jacoco:report coveralls:report
+- codecov
+
+branches:
+  only:
+  - master
+
+env:
+  global:
+  - secure: "WsrWqLS3mnxG5cBotsmNZjXi13jS7BY6wFHdo2ciY8VA208fHirlbwmwSUO/2h45z9qbT1js7cTY8NySjdmx3CxjNgTRmT/cFtOY55/YV8CPIJoA2gUnms6Byne3Q9BVnYEF9URKm8Ny4QQ193rZ/DgqQwcSZO7xqcYPSxHl2dYVmDm2qkmHcOIoSdexODzDtBcRxevUl2HT/BfJ0g/zWwZXjei+m56I2rtA9TzaHfXWaL2ZBSVhHrpUPm5DjU46D4GrdZEvEo8qbTGSPwZaSXOFR5cSkA1kqCO88/v0l01UqkbHIlgzJb940beNMxvRt3jhhq1JL7wfZegMnUgzg9LhsBXSYSWg4ufxQKSM0zFW93UY3aOEHqnDigy74SqNTrDo+udL+HwpxwtzZJ5/3glQ5IS2UjzSop3HQKrTPCwwgHOXot2MRYFD+rNwH5QTykpOv6lEqlY0Mwb/jbvN01eJo6txbvYRuYsAEJDfj7DSg4KNlPCG/S02XOYm4QoPwwpLZ4Ezu5aN/tZ3bgKY081QAyJnzkpc2du2NT7rHcO6hW8GZ64fGuxqbb/OHalH39t78OInoUu0KF1XLZQSMO1LLTl3Xj9/beN6oTryuxjrfJYRkd1b+/Q6at5dIRWylROWTxAsbVSTztTJbsZpvKwmTblZMgWuOfPH/0w4NRM="
+  - "MAVEN_OPTS=-Xms1024m -Xmx3072m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=384m"
+
+addons:
+  coverity_scan:
+    project:
+      name: "zhangxuexiang/keep-job"
+      description: "Build submitted via Travis CI"
+    notification_email: 13811785355@163.com
+    build_command_prepend: "mvn clean"
+    build_command: "mvn -DskipTests=true compile"
+    branch_pattern: master
