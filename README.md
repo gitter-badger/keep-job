@@ -19,4 +19,4 @@ Java客户端不依赖任何框架，能够运行于所有Java运行时环境，
   <img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/17364/badge.svg" />
 </a>
 [![codecov](https://codecov.io/gh/zhangxuexiang/keep-job/branch/master/graph/badge.svg)](https://codecov.io/gh/zhangxuexiang/keep-job)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Join the chat at https://gitter.im/keep-job/Lobby](https://badges.gitter.im/keep-job/Lobby.svg)](https://gitter.im/keep-job/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
